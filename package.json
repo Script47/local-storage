@@ -1,14 +1,17 @@
 {
   "name": "@script47/local-storage",
   "version": "0.0.1",
-  "description": "A simple but effective wrapper around localStorage.",
+  "description": "A handy wrapper around localStorage.",
   "author": "Script47 <Script47@hotmail.com>",
   "keywords": [
+    "storage",
     "ls",
     "localstorage",
     "local-storage",
-    "storage",
-    "persistance"
+    "local-storage-api",
+    "persistance",
+    "persistant-stroage",
+    "persistantstorage"
   ],
   "license": "MIT",
   "repository": {
