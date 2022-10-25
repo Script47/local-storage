@@ -10,7 +10,7 @@
     "local-storage",
     "local-storage-api",
     "persistance",
-    "persistant-stroage",
+    "persistant-storage",
     "persistantstorage"
   ],
   "license": "MIT",
