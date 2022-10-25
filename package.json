@@ -1,0 +1,30 @@
+{
+  "name": "@script47/local-storage",
+  "version": "0.0.1",
+  "description": "A simple but effective wrapper around localStorage.",
+  "author": "Script47 <Script47@hotmail.com>",
+  "keywords": [
+    "ls",
+    "localstorage",
+    "local-storage",
+    "storage",
+    "persistance"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Script47/local-storage.git"
+  },
+  "main": "./dist/local-storage.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
+    "babel-loader": "^8.2.5",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
