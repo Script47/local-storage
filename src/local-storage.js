@@ -33,13 +33,13 @@ function set(key, value) {
  * Get a local storage item
  * @param key - The key of the item
  * @param def - The default value if the item is not set
- * @returns {null|any}
+ * @returns {any|undefined}
  */
-function get(key, def = null) {
+function get(key, def = undefined) {
     let item = localStorage.getItem(key);
 
     if (item === null) {
-        return def;
+        return undefined;
     }
 
     return JSON.parse(item);
@@ -81,15 +81,6 @@ function on(type, listener) {
     window.addEventListener(type, listener);
 }
 
-/**
- * Stop listening to events defined by the package
- * @param type - 'ls.set', 'ls.remove', or 'ls.clear'
- * @param listener - Callback function
- */
-function off(type, listener) {
-    window.removeEventListener(type, listener);
-}
-
 function dispatchEvent(type, detail) {
     window.dispatchEvent(new CustomEvent(type, {
         detail
@@ -101,6 +92,5 @@ ls.get = get;
 ls.remove = remove;
 ls.clear = clear;
 ls.on = on;
-ls.off = off;
 
 export default ls;

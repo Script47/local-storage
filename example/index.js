@@ -1,22 +1,18 @@
 import ls from '../src/local-storage.js';
 
-// const keys = {
-//     name: 'John Doe',
-//     age: 25,
-//     pi: Math.PI,
-//     authenticated: true,
-//     user: {
-//         token: btoa(Math.random().toString())
-//     },
-//     languages: ['English', 'French', 'Russian'],
-// };
-//
-// Object.keys(keys).forEach((key) => {
-//     ls(key, keys[key]);
-// });
+const keys = {
+    name: 'John Doe',
+    age: 25,
+    pi: Math.PI,
+    authenticated: true,
+    user: {
+        token: btoa(Math.random().toString())
+    },
+    languages: ['English', 'French', 'Russian'],
+};
 
-ls.on('ls.set', ({ detail }) => {
-    console.log(detail.key, detail.value); // name John Doe
+Object.keys(keys).forEach((key) => {
+    ls(key, keys[key]);
+
+    console.log(ls(key));
 });
-
-ls.set('name', 'John Doe');

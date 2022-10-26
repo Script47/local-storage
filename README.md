@@ -1,22 +1,29 @@
-# local-storage
+# `@script47/local-storage`
 
-A simple but effective wrapper around localStorage.
+A handy wrapper around localStorage.
 
+- What you see is what you get; Simple and clean wrapper, nothing extra
+- Respects types; no longer do you have to worry about casting items after retrieving them
+- Custom events on actions; listen to events on `set`, `remove`, and `clear`
+
+**Note:** This wrapper will not work if the `localStorage` API is not available.
 ---
+
+## Install
+
+```shell
+npm i @script47/local-storage
+```
 
 ## API
 
+#### Set or get a key using the quick accessor:
+
 ```javascript
-/**
- * Accessor to set and get local storage items
- * @param key - The key of the item
- * @param value - The value of the item
- * @returns {boolean|any}
- */
 ls(key, value);
 ```
 
-#### Usage
+#### Example
 
 ```javascript
 ls('key', 'value'); // true
@@ -25,17 +32,13 @@ ls('key'); // 'value'
 
 ---
 
+#### Set a local storage item:
+
 ```javascript
-/**
- * Set a local storage item
- * @param key - The key of the item
- * @param value - The value of the item
- * @returns {boolean}
- */
 set(key, value);
 ```
 
-#### Usage
+#### Example
 
 ```javascript
 ls.set('key', 'value'); // true
@@ -43,82 +46,87 @@ ls.set('key', 'value'); // true
 
 ---
 
+#### Get a local storage item:
+
 ```javascript
-/**
- * Get a local storage item
- * @param key - The key of the item
- * @param def - The default value if the item is not set
- * @returns {null|any}
- */
-get(key, def = null);
+get(key, def = undefined);
 ```
 
-#### Usage
+#### Example
 
 ```javascript
 ls.set('key', 'value'); // true
 ls.get('key', 'default value'); // 'value'
 ls.get('i-dont-exist', 'default value'); // 'default value'
-ls.get('i-dont-exist'); // null
+ls.get('i-dont-exist'); // undefined
 ```
 
 ---
 
+#### Remove a local storage item:
+
 ```javascript
-/**
- * Remove a local storage item
- * @param key - The key of the item
- * @returns {boolean}
- */
 remove(key);
 ```
 
-#### Usage
+#### Example
 
 ```javascript
 ls.set('key', 'value'); // true
 ls.get('key'); // 'value'
 ls.remove('key'); // true
-ls.get('key'); // null
+ls.get('key'); // undefined
 ```
 
 ---
 
+#### Clear local storage completely:
+
 ```javascript
-/**
- * Clear local storage completely
- * @returns {boolean}
- */
 clear();
 ```
 
-#### Usage
+#### Example
 
 ```javascript
 ls.set('key', 'value'); // true
 ls.set('another-key', 'another-value'); // true
-ls.clear(); // -> true
-ls.get('key'); // null
-ls.set('another-key'); // null
+ls.clear(); // true
+ls.get('key'); // undefined
+ls.get('another-key'); // undefined
 ```
 
 ---
 
+#### Listen to events attached to localStorage actions by the package:
+
 ```javascript
-/**
- * Listen to events defined by the package
- * @param type - 'ls.set', 'ls.remove', or 'ls.clear'
- * @param listener - Callback function
- */
 on(type, listener);
 ```
 
-#### Usage
+#### Example
 
 ```javascript
 ls.on('ls.set', ({detail}) => {
-    console.log(detail.key, detail.value); // 'name' 'John Doe'
+    console.log(`${detail.key}=${detail.value}`);
 });
 
-ls.set('name', 'John Doe'); // true
+ls.on('ls.remove', ({detail}) => {
+    console.log(`${detail.key} was removed.`);
+});
+
+ls.on('ls.clear', () => {
+    console.log('localStorage was cleared.');
+})
+
+ls.set('name', 'John Doe');
+ls.set('age', 35);
+
+setTimeout(() => {
+    ls.remove('name');
+
+    setTimeout(() => {
+        ls.clear();
+    }, 2500);
+}, 2500);
 ```
