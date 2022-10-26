@@ -1,6 +1,6 @@
 {
   "name": "@script47/local-storage",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A handy wrapper around localStorage.",
   "author": "Script47 <Script47@hotmail.com>",
   "keywords": [

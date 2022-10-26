@@ -1,5 +1,3 @@
-import ls from '../src/local-storage.js';
-
 const keys = {
     name: 'John Doe',
     age: 25,

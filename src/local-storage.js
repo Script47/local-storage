@@ -93,4 +93,4 @@ ls.remove = remove;
 ls.clear = clear;
 ls.on = on;
 
-export default ls;
+module.exports = ls;

@@ -5,6 +5,7 @@ module.exports = {
     target: 'web',
     entry: './src/local-storage.js',
     output: {
+        library: 'ls',
         filename: 'local-storage.js',
         path: path.resolve(__dirname, 'dist'),
     },
