@@ -7,7 +7,12 @@ A handy wrapper around localStorage.
 - Custom events on actions; listen to events on `set`, `remove`, and `clear`
 
 **Note:** This wrapper will not work if the `localStorage` API is not available.
----
+
+## Contents
+
+- [Installation](#installation)
+- [API](#api)
+- [Playground](https://jsfiddle.net/m2ewytr6/)
 
 ## Installation
 
@@ -20,7 +25,7 @@ npm i @script47/local-storage
 #### via CDN
 
 ```html
-<script src="https://unpkg.com/@script47/local-storage@0.0.5/dist/local-storage.js"></script>
+<script src="https://unpkg.com/@script47/local-storage"></script>
 ```
 
 ## API
