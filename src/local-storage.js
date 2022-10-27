@@ -6,7 +6,13 @@
  */
 function ls(key, value) {
     if (arguments.length === 1) {
-        return get(key);
+        if (typeof key === 'string') {
+            return get(key);
+        } else if (Object.prototype.toString.call(key) === '[object Object]') {
+            return set(key);
+        } else {
+            throw new Error(`Unknown key type, expected string or object.`);
+        }
     }
 
     return set(key, value);
@@ -18,13 +24,28 @@ function ls(key, value) {
  * @param value - The value of the item
  * @returns {boolean}
  */
-function set(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
+function set(key, value = undefined) {
+    if (Object.prototype.toString.call(key) === '[object Object]') {
+        Object.keys(key).forEach((k) => {
+            localStorage.setItem(k, JSON.stringify(key[k]));
 
-    dispatchEvent('ls.set', {
-        key,
-        value
-    });
+            dispatchEvent('ls.set', {
+                key: k,
+                value: key[k]
+            });
+        });
+    } else {
+        if (value === undefined) {
+            throw new Error(`Missing argument value.`);
+        }
+
+        localStorage.setItem(key, JSON.stringify(value));
+
+        dispatchEvent('ls.set', {
+            key,
+            value
+        });
+    }
 
     return true;
 }
