@@ -72,11 +72,21 @@ function get(key, def = undefined) {
  * @returns {boolean}
  */
 function remove(key) {
-    localStorage.removeItem(key);
+    if (Array.isArray(key)) {
+        key.forEach((k) => {
+            localStorage.removeItem(k);
 
-    dispatchEvent('ls.remove', {
-        key
-    });
+            dispatchEvent('ls.remove', {
+                key
+            });
+        });
+    } else {
+        localStorage.removeItem(key);
+
+        dispatchEvent('ls.remove', {
+            key
+        });
+    }
 
     return true;
 }
