@@ -40,6 +40,10 @@ ls(key, value);
 
 ```javascript
 ls('key', 'value'); // true
+// or
+ls({
+   key: 'value'
+});
 ls('key'); // 'value'
 ```
 
@@ -55,6 +59,10 @@ set(key, value);
 
 ```javascript
 ls.set('key', 'value'); // true
+// or
+ls.set({
+    key: 'value'
+})
 ```
 
 ---
@@ -69,7 +77,7 @@ get(key, def = undefined);
 
 ```javascript
 ls.set('key', 'value'); // true
-ls.get('key', 'default value'); // 'value'
+ls.set('key', 'default value'); // 'value'
 ls.get('i-dont-exist', 'default value'); // 'default value'
 ls.get('i-dont-exist'); // undefined
 ```
@@ -88,6 +96,8 @@ remove(key);
 ls.set('key', 'value'); // true
 ls.get('key'); // 'value'
 ls.remove('key'); // true
+// or
+ls.remove(['key']);
 ls.get('key'); // undefined
 ```
 
